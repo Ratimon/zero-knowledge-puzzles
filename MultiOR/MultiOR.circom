@@ -10,6 +10,29 @@ template MultiOR(n) {
     signal input in[n];
     signal output out;
 
+    // a constrain that forces inputs element to be only 0 or 1
+    for (var i = 0; i < n; i++) {
+        in[i] * (1 - in[i]) === 0;
+    }
+
+    // f(x) = 1 - x
+    // g(x_n, x_n-1) = x_n * x_n-1
+    // h(x) = 1 - x
+
+    // [0,0,0] -> [1,1,1]  ->  1*1*1 = 1 -> 0
+    // [1,1,1] -> [0,0,0]  ->  0*0*0 = 0 -> 1
+    // [1,0,0] -> [0,1,1]   ->  0*1*1 = 0 -> 1
+
+    signal s[n];
+    s[0] <== 1 - in[0];
+
+    for(var i = 1; i < n; i++){
+        s[i] <== (1 - in[i]) * s[i - 1];
+    }
+
+    out <== 1 - s[n-1];
+
+
 }
 
 component main = MultiOR(4);
