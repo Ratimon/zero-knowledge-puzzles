@@ -16,6 +16,25 @@ template IntDiv(n) {
     signal input quotient;
     signal input remainder;
 
+    
+
+    // ex.
+    // num = 13
+    // den = 10
+    // q = 1
+    // r = 3
+
+    // num/den = q + r/ den
+    // num = (q * den) + r
+
+    // a constraint for numerator
+    numerator === (quotient * denominator) + remainder;
+
+    // a constraint for remainder
+    signal r;
+    r <== LessThan(n)([remainder, denominator]);
+    r === 1;
+
 }
 
 component main = IntDiv(252);

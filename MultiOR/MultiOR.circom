@@ -10,7 +10,7 @@ template MultiOR(n) {
     signal input in[n];
     signal output out;
 
-    // a constrain that forces inputs element to be only 0 or 1
+    // a constraint that forces inputs element to be only 0 or 1
     for (var i = 0; i < n; i++) {
         in[i] * (1 - in[i]) === 0;
     }
