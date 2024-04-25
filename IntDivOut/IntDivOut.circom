@@ -10,6 +10,9 @@ template IntDivOut(n) {
     signal input denominator;
     signal output out;
 
+    signal quotient;
+    signal remainder;
+
     remainder <-- numerator % denominator;
     quotient <-- numerator \ denominator;
 
@@ -21,8 +24,7 @@ template IntDivOut(n) {
     r <== LessThan(n)([remainder, denominator]);
     r === 1;
 
-    // assign return value to be quotient
-    // returning a value only applies from circuit to circuit. not the outside world
+    // assign return value
     out <-- quotient;
 
 }
