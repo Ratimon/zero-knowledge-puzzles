@@ -16,8 +16,6 @@ template IntDiv(n) {
     signal input quotient;
     signal input remainder;
 
-    
-
     // ex.
     // num = 13
     // den = 10
