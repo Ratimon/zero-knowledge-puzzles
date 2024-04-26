@@ -30,6 +30,9 @@ describe("IsSorted -- Constrain signals to be sorted", function() {
         expect(await circuit.calculateWitness({
             "in": [0, 0, 0, 1]
         })).to.be.ok;
+        expect(await circuit.calculateWitness({
+            "in": [0, 1, 2, 3]
+        })).to.be.ok;
     });
 
     it("Should revert if the elements are not sorted", async () => {

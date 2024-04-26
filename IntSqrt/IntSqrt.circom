@@ -23,6 +23,7 @@ include "../node_modules/circomlib/circuits/comparators.circom";
 
 template IntSqrt(n) {
     signal input in[2];
+    
 
 }
 

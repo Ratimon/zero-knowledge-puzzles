@@ -9,26 +9,19 @@ include "../node_modules/circomlib/circuits/comparators.circom";
 template IsSorted() {
     signal input in[4];
 
-    component lte0 = LessEqThan(252);
-    component lte1 = LessEqThan(252);
-    component lte2 = LessEqThan(252);
+    signal a;
+    // 0 , 1
+    a <== GreaterEqThan(252)([in[3], in[2]]);
 
+    signal b;
+    b <== GreaterEqThan(252)([in[2], in[1]]);
 
-    lte0.in[0] <== in[0];
-    lte0.in[1] <== in[1];
-   
+    signal c;
+    c <== GreaterEqThan(252)([in[1], in[0]]);
 
-    lte1.in[0] <== in[1];
-    lte1.in[1] <== in[2];
-    
-
-    lte2.in[0] <== in[2];
-    lte2.in[1] <== in[3];
-
-    lte0.out === 1;
-    lte1.out === 1;
-    lte2.out === 1;
-
+    a === 1;
+    b === 1;
+    c === 1;
 
 }
 
