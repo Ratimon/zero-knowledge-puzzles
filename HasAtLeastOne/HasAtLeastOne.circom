@@ -17,6 +17,8 @@ template HasAtLeastOne(n) {
        s[i] <== IsEqual()([in[i], k]);
     }
 
+    // check MultiOR
+
     // f(x) = 1 - x
     // g(x_n, x_n-1) = x_n * x_n-1
     // h(x) = 1 - x
